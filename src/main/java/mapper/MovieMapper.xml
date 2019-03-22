@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.MovieMapper">
+
+	<select id="MovieCount" resultType="int">
+		SELECT 
+			COUNT(*) 
+		FROM MOVIE
+	</select>
+	<select id="MovieInsert" parameterType="com.example.demo.Movie">
+		INSERT INTO BOARD (m_title, m_img, m_pubDate, m_director, m_rating)
+		VALUES (#{m_title}, #{m_img}, #{m_pubDate}, #{m_director}, #{m_rating})
+	</select>
+</mapper>
