@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper3.0//EN"
 	</select>
 	
 	<select id="MovieInsert" parameterType="com.example.demo.Movie">
-		INSERT INTO BOARD (m_title, m_img, m_pubDate, m_director, m_rating)
+		INSERT INTO movie (m_title, m_img, m_pubDate, m_director, m_rating)
 		VALUES (#{m_title}, #{m_img}, #{m_pubDate}, #{m_director}, #{m_rating})
 	</select>
 	
