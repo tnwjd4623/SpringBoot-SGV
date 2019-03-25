@@ -5,10 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import com.example.demo.NaverMovie;
 
 @Controller
 public class MovieController {
-	/*@Autowired
+	@Autowired
 	private NaverMovie naverMovie;
 	
 	@RequestMapping("/search")
@@ -16,11 +17,11 @@ public class MovieController {
 		ModelAndView mav = new ModelAndView();
 		
 		if(text != null) {
-			//mav.addObject("movieList", naverMovie.searchMovie(text, 10));
+			mav.addObject("movieList", naverMovie.searchMovie(text, 10));
 		}
-		mav.setViewName("movieList");
+		mav.setViewName("/movieList");
 		
 		return mav;
-	}*/
+	}
 	
 }

@@ -14,7 +14,7 @@ public class HelloController {
 	@Resource(name="mapper.MovieMapper")
 	MovieMapper movieMapper;
 	
-	@RequestMapping("/")
+	@RequestMapping("/hello")
 	public String dbTest() throws Exception {
 		System.out.println(movieMapper.MovieCount());
 		return "hello";

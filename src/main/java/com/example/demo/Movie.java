@@ -6,8 +6,15 @@ public class Movie {
 	private String m_img;
 	private String m_pubDate;
 	private String m_director;
-	private int m_rating;
+	private String m_rating;
 	
+	public Movie(String title) {
+		this.m_title = title;
+		this.m_img = "";
+		this.m_director = "";
+		this.m_pubDate = "";
+		this.m_rating = "";
+	}
 	public int getM_no() {
 		return m_no;
 	}
@@ -38,11 +45,11 @@ public class Movie {
 	public void setM_director(String m_director) {
 		this.m_director = m_director;
 	}
-	public int getM_rating() {
+	public String getM_rating() {
 		return m_rating;
 	}
-	public void setM_rating(int m_rating) {
-		this.m_rating = m_rating;
+	public void setM_rating(String string) {
+		this.m_rating = string;
 	}
 	
 
