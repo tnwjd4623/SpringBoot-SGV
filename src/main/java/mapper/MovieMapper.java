@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.Movie;
+import com.example.demo.Schedule;
 
 @Repository("mapper.MovieMapper")
 public interface MovieMapper {
@@ -19,4 +20,11 @@ public interface MovieMapper {
 	
 	//Delete Movie
 	public void MovieDelete() throws Exception;
+	
+	//Movie number
+	public int MovieNumber(Movie movie) throws Exception;
+	
+	//Insert schedule
+	public void ScheduleInsert(Schedule schedule) throws Exception;
+	
 }

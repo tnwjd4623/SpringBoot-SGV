@@ -21,16 +21,5 @@ public class HelloController {
 		return "hello";
 	}
 	
-	@RequestMapping("/insert_movie")
-	public String movieInsert(HttpServletRequest request) throws Exception {
-		Movie movie = new Movie(request.getParameter("title"));
-		movie.setM_director(request.getParameter("director"));
-		movie.setM_img(request.getParameter("img"));
-		movie.setM_pubDate(request.getParameter("pubDate"));
-		movie.setM_rating(request.getParameter("rating"));
-		
-		
-		movieMapper.MovieInsert(movie);
-		return "redirect:/hello";
-	}
+	
 }

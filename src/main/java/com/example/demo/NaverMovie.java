@@ -66,7 +66,8 @@ public class NaverMovie {
             		tmp = tmp.replaceAll("<b>","");
             		tmp = tmp.replaceAll("</b>", "");
             		
-            		Movie movie = new Movie(tmp);
+            		Movie movie = new Movie();
+            		movie.setM_title(tmp);
             			
             		if(object.get("image") != null) {
             			
@@ -94,7 +95,7 @@ public class NaverMovie {
 		}catch(Exception e) {
 			System.out.println(e);
 		}
-		
+		System.out.println("success");
 		return list;
 	}
 

@@ -1,24 +1,17 @@
 package com.example.demo;
 
 public class Movie {
-	private int m_no;
+	private Integer m_no;
 	private String m_title;
 	private String m_img;
 	private String m_pubDate;
 	private String m_director;
 	private String m_rating;
 	
-	public Movie(String title) {
-		this.m_title = title;
-		this.m_img = "";
-		this.m_director = "";
-		this.m_pubDate = "";
-		this.m_rating = "";
-	}
-	public int getM_no() {
+	public Integer getM_no() {
 		return m_no;
 	}
-	public void setM_no(int m_no) {
+	public void setM_no(Integer m_no) {
 		this.m_no = m_no;
 	}
 	public String getM_title() {

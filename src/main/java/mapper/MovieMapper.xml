@@ -23,4 +23,15 @@ PUBLIC "-//mybatis.org//DTD Mapper3.0//EN"
 	<select id="MovieDelete" parameterType="int">
 		DELETE FROM BOARD WHERE m_no = #{m_no}
 	</select>
+	
+	<select id="MovieNumber" parameterType="com.example.demo.Movie">
+		SELECT m_no 
+		FROM MOVIE
+		WHERE m_title = #{m_title} AND m_director = #{m_director}
+	</select>
+	
+	<select id="ScheduleInsert" parameterType="com.example.demo.Schedule">
+		INSERT INTO schedule (m_no, date, s_time, e_time, c_no) 
+		VALUES (#{m_no}, #{date}, #{s_time}, #{e_time}, #{c_no})
+	</select>
 </mapper>
