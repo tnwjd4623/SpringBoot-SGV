@@ -1,0 +1,26 @@
+.navbar {
+	
+}
+
+header{
+  position: fixed;
+  width: 100%;
+  text-align: left;
+  font-size: 30px;
+  height: 130px;
+  background: ##2c2c2d;
+  color: #666;
+  font-family: 'PT Sans', sans-serif;
+
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  position: absolute;
+}
