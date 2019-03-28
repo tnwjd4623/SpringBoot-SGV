@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.Movie;
 import com.example.demo.Schedule;
+import com.example.demo.Booking;
 
 @Repository("mapper.MovieMapper")
 public interface MovieMapper {
@@ -26,5 +27,11 @@ public interface MovieMapper {
 	
 	//Insert schedule
 	public void ScheduleInsert(Schedule schedule) throws Exception;
+	
+	//Insert Booking
+	public void Booking(Booking booking) throws Exception;
+	
+	//scheduleList
+	public List<Schedule> scheduleList(int m_no) throws Exception;
 	
 }

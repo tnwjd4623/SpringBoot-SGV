@@ -34,4 +34,16 @@ PUBLIC "-//mybatis.org//DTD Mapper3.0//EN"
 		INSERT INTO schedule (m_no, date, s_time, e_time, c_no) 
 		VALUES (#{m_no}, #{date}, #{s_time}, #{e_time}, #{c_no})
 	</select>
+	
+	<select id="Booking" parameterType ="com.example.demo.Booking">
+		INSERT INTO booking (b_no, m_no, c_no, date, s_time, e_time, id, pw)
+		VALUES (#{b_no}, #{m_no}, #{c_no}, #{date}, #{s_time}, #{e_time}, #{id}, #{pw})
+	</select>
+	
+	<select id="scheduleList" parameterType = "int" resultType="com.example.demo.Schedule">
+		SELECT * 
+		FROM schedule
+		WHERE m_no = #{m_no}
+		ORDER BY c_no
+	</select>
 </mapper>

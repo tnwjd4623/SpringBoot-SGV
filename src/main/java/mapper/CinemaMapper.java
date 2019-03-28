@@ -10,5 +10,5 @@ import com.example.demo.Movie;
 @Repository("mapper.CinemaMapper")
 public interface CinemaMapper {
 	public List<Cinema> CinemaList() throws Exception;
-	
+	public String CinemaName(int c_no) throws Exception;
 }

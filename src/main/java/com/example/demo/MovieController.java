@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -20,6 +21,23 @@ public class MovieController {
 	@Autowired
 	private NaverMovie naverMovie;
 	
+	@Resource(name="mapper.MovieMapper")
+	MovieMapper movieMapper;
+	
+	@Resource(name="mapper.CinemaMapper")
+	CinemaMapper cinemaMapper;
+	
+	
+	@RequestMapping("/")
+	public ModelAndView home() throws Exception {
+		ModelAndView mav = new ModelAndView();
+		
+		List<Movie> list = movieMapper.MovieList();
+		mav.addObject("movieList", list);
+		mav.setViewName("home");
+		return mav;
+	}
+	
 	//search 
 	@RequestMapping("/search")
 	public ModelAndView movieList(@RequestParam(required=false)String text) {
@@ -33,12 +51,6 @@ public class MovieController {
 		return mav;
 	}
 	
-	@Resource(name="mapper.MovieMapper")
-	MovieMapper movieMapper;
-	
-	@Resource(name="mapper.CinemaMapper")
-	CinemaMapper cinemaMapper;
-	
 	@RequestMapping("/insert_movie")
 	public String movieInsert(HttpServletRequest request) throws Exception {
 		Movie movie = new Movie();
@@ -49,14 +61,8 @@ public class MovieController {
 		movie.setM_rating(request.getParameter("rating"));
 		
 		movieMapper.MovieInsert(movie);
-		return "redirect:/home";
+		return "redirect:/";
 	}
-	
-	@RequestMapping("/home")
-	public String home() throws Exception {
-		return "home";
-	}
-	
 	
 	@RequestMapping("/addSchedule")
 	public ModelAndView addSchedule() throws Exception {
@@ -90,6 +96,46 @@ public class MovieController {
 		
 		movieMapper.ScheduleInsert(schedule);
 		return "redirect:/home";
+	}
+	
+	@RequestMapping("/login")
+	public ModelAndView getUser(HttpServletRequest request) throws Exception {
+		int m_no = Integer.parseInt(request.getParameter("m_no"));
+		ModelAndView mav = new ModelAndView();
+		Movie movie = new Movie();
+		movie.setM_no(m_no);
+		
+		mav.addObject("movie", movie);
+		
+		mav.setViewName("user");
+		return mav;
+	}
+	
+	@RequestMapping("/booking")
+	public ModelAndView booking(HttpServletRequest request) throws Exception {
+		int m_no = Integer.parseInt(request.getParameter("m_no"));
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		
+		List<Schedule> schedule = movieMapper.scheduleList(m_no);
+		List<String> cinema = new ArrayList<String>();
+		
+		for(int i = 0; i<schedule.size(); i++) {
+			cinema.add(cinemaMapper.CinemaName(schedule.get(i).getC_no()));
+		}
+		
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("m_no", m_no);
+		mav.addObject("id", id);
+		mav.addObject("pw", pw);
+		
+		mav.addObject("cinema", cinema);
+		mav.addObject("scheduleList", schedule);
+		
+		mav.setViewName("booking");
+		
+		return mav;
 	}
 	
 	@RequestMapping("/cinema")

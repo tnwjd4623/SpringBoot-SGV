@@ -10,6 +10,11 @@ PUBLIC "-//mybatis.org//DTD Mapper3.0//EN"
 		*
 		FROM CINEMA
 	</select>
-	
+	<select id="CinemaName" parameterType="int" resultType="String">
+		SELECT 
+		c_name
+		FROM CINEMA
+		WHERE c_no = #{c_no}
+	</select>
 	
 </mapper>
