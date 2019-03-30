@@ -1,5 +1,5 @@
 # SpringBoot  
-영화관 웹  
+개인/영화관 웹  
   
 ## USE  
 - SpringBoot  
