@@ -1,8 +1,5 @@
-# SpringBoot  
-개인/영화관 웹
-
 # SpringBoot SGV 
-  
+개인/영화관 웹  
 
   
 ## USE  
