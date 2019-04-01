@@ -30,6 +30,12 @@ PUBLIC "-//mybatis.org//DTD Mapper3.0//EN"
 		WHERE m_title = #{m_title} AND m_director = #{m_director}
 	</select>
 	
+	<select id="MovieName" parameterType="int" resultType="String">
+		SELECT m_title
+		FROM MOVIE
+		WHERE m_no = #{m_no}
+	</select>
+	
 	<select id="ScheduleInsert" parameterType="com.example.demo.Schedule">
 		INSERT INTO schedule (m_no, date, s_time, e_time, c_no) 
 		VALUES (#{m_no}, #{date}, #{s_time}, #{e_time}, #{c_no})
@@ -38,6 +44,12 @@ PUBLIC "-//mybatis.org//DTD Mapper3.0//EN"
 	<select id="Booking" parameterType ="com.example.demo.Booking">
 		INSERT INTO booking (b_no, m_no, c_no, date, s_time, e_time, id, pw)
 		VALUES (#{b_no}, #{m_no}, #{c_no}, #{date}, #{s_time}, #{e_time}, #{id}, #{pw})
+	</select>
+	<select id="BookList" parameterType="com.example.demo.User" resultType="com.example.demo.Booking">
+		SELECT * 
+		FROM booking
+		WHERE id = #{id} AND pw = #{pw}
+		ORDER BY b_no
 	</select>
 	
 	<select id="scheduleList" parameterType = "int" resultType="com.example.demo.Schedule">

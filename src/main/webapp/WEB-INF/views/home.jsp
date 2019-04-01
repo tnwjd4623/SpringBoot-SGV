@@ -31,6 +31,9 @@
 			<li class="nav-item">
 				<a class="nav-link" href="#">영화관</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="./book_user">예매조회</a>
+			</li>
 		</ul>
 	</nav>
 	<br/><br/>

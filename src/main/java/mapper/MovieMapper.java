@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.Movie;
 import com.example.demo.Schedule;
+import com.example.demo.User;
 import com.example.demo.Booking;
 
 @Repository("mapper.MovieMapper")
@@ -25,11 +26,17 @@ public interface MovieMapper {
 	//Movie number
 	public int MovieNumber(Movie movie) throws Exception;
 	
+	//Movie name
+	public String MovieName(int m_no) throws Exception;
+	
 	//Insert schedule
 	public void ScheduleInsert(Schedule schedule) throws Exception;
 	
 	//Insert Booking
 	public void Booking(Booking booking) throws Exception;
+	
+	//Book List
+	public List<Booking> BookList(User user) throws Exception;
 	
 	//scheduleList
 	public List<Schedule> scheduleList(int m_no) throws Exception;

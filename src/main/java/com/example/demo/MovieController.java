@@ -137,6 +137,64 @@ public class MovieController {
 		
 		return mav;
 	}
+	@RequestMapping("/booking_action")
+	public String insert_booking(HttpServletRequest request) throws Exception{
+		int m_no = Integer.parseInt(request.getParameter("m_no"));
+		int c_no = Integer.parseInt(request.getParameter("c_no"));
+		
+		String b_no = ""+System.currentTimeMillis();
+		
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		String date = request.getParameter("date");
+		String s_time = request.getParameter("s_time");
+		String e_time = request.getParameter("e_time");
+		
+		Booking b = new Booking();
+		b.setB_no(b_no);b.setM_no(m_no);
+		b.setC_no(c_no);b.setDate(date);
+		b.setId(id);b.setPw(pw);
+		b.setS_time(s_time);b.setE_time(e_time);
+		
+		movieMapper.Booking(b);
+		return "home";
+		
+	}
+	
+	@RequestMapping("/book_user")
+	public String book_user() throws Exception {
+		return "/book_user";
+	}
+	
+	@RequestMapping("/booking_list")
+	public ModelAndView booking_list(HttpServletRequest request) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		User u = new User();
+		
+		u.setId(id);u.setPw(pw);
+		List<Booking> b = movieMapper.BookList(u);
+		
+		System.out.println(b.get(0).getB_no());
+		
+		List<String> m = new ArrayList<String>();
+		List<String> c = new ArrayList<String>();
+		
+		
+		for(int i = 0; i<b.size(); i++) {
+			c.add(cinemaMapper.CinemaName(b.get(i).getC_no()));
+			m.add(movieMapper.MovieName(b.get(i).getM_no()));
+		}
+		
+		mav.addObject("book", b);
+		mav.addObject("movie", m);
+		mav.addObject("cinema", c);
+		
+		mav.setViewName("book_detail");
+		
+		return mav;
+	}
 	
 	@RequestMapping("/cinema")
 	public ModelAndView cinemaList() throws Exception {
